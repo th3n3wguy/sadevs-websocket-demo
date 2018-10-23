@@ -1,0 +1,16 @@
+###################################
+# IDE Directories / Files         #
+###################################
+.idea
+.project
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+###################################
+# NPM / Bower Directories / Files #
+###################################
+**/node_modules
+**/*npm-debug.log*
