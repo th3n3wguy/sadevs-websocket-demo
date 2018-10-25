@@ -3,7 +3,7 @@ const _ = require('lodash');
 module.exports = function sendMessage(socket, message, callback = () => {}) {
   console.log('sendMessage', message);
   return verifyMessageValidity(socket, message)
-    .then((() => broadcastMessage(socket, message))
+    .then(() => broadcastMessage(socket, message))
     .then(callback)
     .catch(callback);
 };
