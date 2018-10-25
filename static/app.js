@@ -1,7 +1,7 @@
 const socket = io('http://localhost:8080');
 
 socket.on('userSentMessage', (message) => {
-  alert('Another user sent a message!')
+  $('#user-messages').append(`<p>${message}</p>`);
 });
 
 $('#userSubmit').on('click', () => {
