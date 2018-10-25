@@ -1,9 +1,22 @@
 const socket = io('http://localhost:8080');
 
-socket.on('userSentMessage', (message) => {
-  $('#user-messages').append(`<p>${message}</p>`);
-});
-
-$('#userSubmit').on('click', () => {
-  socket.emit('sendMessage', $('#userInput').val());
+const app = new Vue({
+  el: '#app',
+  data: {
+    userMessages: [],
+    userInput: null
+  },
+  mounted() {
+    socket.on('userSentMessage', (message) => {
+      this.userMessages.push(message);
+    });
+  },
+  methods: {
+    sendMessage() {
+      socket.emit('sendMessage', this.userInput, () => {
+        this.userMessages.push(this.userInput);
+        this.userInput = null;
+      });
+    }
+  }
 });

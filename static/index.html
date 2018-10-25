@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <head>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 </head>
 <body>
   <h1>Welcome to Web Sockets!</h1>
-  <input id="userInput" type="text" />
-  <button id="userSubmit" type="button">Send Message</button>
-  <div id="user-messages"></div>
+  <div id="app">
+    <input type="text" v-model="userInput" />
+    <button type="button" @click="sendMessage">Send Message</button>
+    <p v-for="message in userMessages">{{ message }}</p>
+  </div>
   <script type="text/javascript" src="/app.js"></script>
 </body>
 </html>
